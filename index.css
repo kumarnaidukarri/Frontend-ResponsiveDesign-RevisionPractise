@@ -16,6 +16,17 @@
 body{
   background-color: pink;
 
+  padding: 2px;
+  border: 2px solid black;
+  /* Margin Collpasing:
+     it happens when 2 vetical margins touch, instead of adding together.
+     browser uses the Larger Margin".
+     *** Rule: Rule: If there is padding or border on the parent, "margin collapsing stops".
+
+     i.e, 'body' have padding or border.
+          so, child margin(h1) doesn't collide with parent(body).
+  */
+
 }
 
 h1{

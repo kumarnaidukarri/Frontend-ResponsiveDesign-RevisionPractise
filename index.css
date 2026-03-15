@@ -1,0 +1,55 @@
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  /* box-sizing: border-box; */
+
+  /*
+  by default, all html elements get default values like
+  margin, padding, border etc. from the browser. So, to avoid that we can set all the elements to have 0 margin and 0 padding and box-sizing: border-box.
+
+
+  border-box means that the total width of the element will include the padding and border.
+  so we don't have to worry about the extra padding and border when we set the width of the element.
+  */
+}
+
+body{
+  background-color: pink;
+
+}
+
+h1{
+  background-color: red;
+  font-size: 20px;
+
+  width: 400px;
+  padding: 20px;
+  margin: 25px;
+  border: 2px solid black;
+
+  box-sizing: border-box;
+
+  /*
+  i) box-sizing: border-box;
+     total width      = actualwidth(includes padding and border)
+     i.e, total width = 400px(40px+4px+356px) = 400px
+  */
+
+}
+p{
+  background-color: blue;
+  font-size: 20px;
+
+  width:400px;
+  padding: 20px;
+  margin: 25px;
+  border: 2px solid black;
+
+  box-sizing: content-box; /* default value */
+
+  /*
+  ii) box-sizing: content-box;
+      total width = actualwidth + extra(padding+border)
+      i.e, total width = 400px + (20+20 + 2+2) = 444px
+  */
+}

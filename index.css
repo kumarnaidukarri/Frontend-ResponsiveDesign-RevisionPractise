@@ -1,7 +1,7 @@
 *, *::before, *::after {
   margin: 0;
   padding: 0;
-  /* box-sizing: border-box; */
+  box-sizing: border-box;
 
   /*
   by default, all html elements get default values like
@@ -14,10 +14,10 @@
 }
 
 body{
-  background-color: pink;
-
-  padding: 2px;
-  border: 2px solid black;
+  background-color: lightyellow;
+  min-height: 100vh;
+  /* padding: 2px;
+  border: 2px solid black; */
   /* Margin Collpasing:
      it happens when 2 vetical margins touch, instead of adding together.
      browser uses the Larger Margin".
@@ -29,38 +29,56 @@ body{
 
 }
 
-h1{
-  background-color: red;
-  font-size: 20px;
 
-  width: 400px;
-  padding: 20px;
-  margin: 25px;
-  border: 2px solid black;
 
-  box-sizing: border-box;
 
-  /*
-  i) box-sizing: border-box;
-     total width      = actualwidth(includes padding and border)
-     i.e, total width = 400px(40px+4px+356px) = 400px
-  */
+.flex-container {
+  min-height: 90vh;
+  background-color: lightgreen;
+
+  display: flex;
+  justify-content: start;
+  align-items: stretch;
+  gap: 5px;
+
+  flex-wrap: wrap;
+  align-content: flex-start; /* Flex lines when wrapped into multiple lines */
 
 }
-p{
-  background-color: blue;
-  font-size: 20px;
+.item {
+  padding: 10px;
+  background-color: #ebebeb;
+  border: 1px solid black;
 
-  width:400px;
-  padding: 20px;
-  margin: 25px;
-  border: 2px solid black;
+  width: 100px;
+  /* flex-basis: 100px;   default=auto, it Sets Width or Height based on 'flex-direction' property(main axis).  ex: row(sets width), col(sets height) */
+  flex-shrink: 1; /* shrinks to fit available space.  default=1, '1' means shrink, '0' means don't shrink */
+  flex-grow: 1; /* grows to fill available space.     default=0 */
+  /* flex: 1 1 100px; /* flex-grow | flex-shrink | flex-basis */
+  min-width: 0; /* Flex item will shrink more than it's content. it prevents overflow */
 
-  box-sizing: content-box; /* default value */
+  /* align-self: auto;  it overrides the 'align-items' property for specific item. */
+  /* order: 0; it controls the order of the flex items. */
+}
 
-  /*
-  ii) box-sizing: content-box;
-      total width = actualwidth + extra(padding+border)
-      i.e, total width = 400px + (20+20 + 2+2) = 444px
-  */
+.item-1 {
+  background-color: lightblue;
+}
+
+
+@media (max-width: 800px) {
+  html {
+    font-size: 62.5%;
+  }
+   section {
+    background-color: blue;
+   }
+}
+@media (max-width: 500px) {
+  html {
+    font-size: 50%;
+  }
+  section {
+    background-color: red;
+  }
 }

@@ -1,0 +1,79 @@
+1) Border-Box vs Content-Box:-
+     i) box-sizing: border-box;
+     total width      = actualwidth(includes padding and border)
+     i.e, total width = 400px(40px+4px+356px) = 400px
+
+     ii) box-sizing: content-box; //default value
+      total width = actualwidth + extra(padding+border)
+      i.e, total width = 400px + (20+20 + 2+2) = 444px
+
+2) Margin Collpasing:
+     it happens when 2 vetical margins touch. 
+     instead of adding together. browser uses the "Larger Margin".
+     *** Rule: If there is padding or border on the parent element, "margin collapsing stops".
+
+     i.e, 'body' have padding or border.
+          so, child margin(h1) doesn't collide with parent(body).
+
+
+3)display: block, inline, inline-block,  flexbox,grid,none.
+  block:  full width available or 100% Width of parent, New line, 
+          set H+W+M+B
+          ex: div,h1,p, ul,li,form, nav,main,header,footer,section. 
+  inline: occupies 'required content width' only, aligns Side-by-Side, 
+          set only horizontal padding,margin. "Not possible to set Height Width, Vertical margin padding".
+          ex: span, a,button,i,img,input,label,select,textarea,
+  inline-block: aligns side-by-side, respects box model(set H+W+M+B) 
+                generally, we manually overide behaviour using css, make this elements.
+                ex: <div style="display:inline-block"> </div> 
+  none: removes element from "Layout".
+
+  Flex: it is Flexible Box Layout used for 1-D layouts. i.e, Row or Column.
+    flex-container: 
+         display:flex, inline-flex;
+         flex-direction: row(default), row-reverse, column, column-reverse   // sets Main Axis direction
+         justify-content: flex-start(default), center, flex-end, space-between, space-evenly, space-around. // controls flex-items in flexline(inside each row). Main Axis
+         align-items: stretch(default), baseline, flex-start, center, flex-end. // Aligns flex-items in flexline(inside each row). Cross Axis. 
+
+         flex-wrap: nowrap(default), wrap, wrap-reverse
+         align-content:  stretch(default), flex-start, center, flex-end, space-around
+, space-between, space-evenly. // Align flex-lines(rows) in cross axis. but works only when "multiple flex lines are there wrapped". 
+         gap row-gap column-gap: 5px; 
+          
+
+    flex-item:
+         order: 0(default), 1,2,3
+         align-self: auto(default inherits from align-items), stretch, baseline, flex-start, center, flex-end // overides 'align-items' property, 'Cross Axis'.
+         flex-grow :  0(default), 1,2. // item grows relative to other flex items.
+         flex-shrink: 1(default), 2    // item shrinks relative to other flex items.
+         flex-basis:  auto(default) 250px; // intial length of item. Overides width or height only along the "Main Axis".
+                      i.e, if flex-direction=row, then flex-basis means Width. if flex-direction=column, then flex-basis means Height.
+
+         flex: grow(0) shrink(1) basis(0%). // short hand property
+
+         note:- ***
+                Flex items don't shrink below their "Content Size" by default.
+                this creates overflow issues, especially with: long text, images. because, bydefault 'min-width' is 'auto'. make it 0. 
+                    
+
+  Grid: it is used for 2-D layouts. i.e, Row and Column.
+     grid-container:
+          display: grid;
+          grid-template-columns: 200px 1fr 1fr;   //  columns width   - px,%,fr,auto, minmax(80px,1fr)
+          grid-template-rows:    repeat(6,200px); //  rows height
+          ex: 
+                  c1  c2  c3
+             r1
+             r2
+             r3
+             r4
+             r5
+             r6
+   
+     grid-item:
+          grid-row: 1 / 2;      // item starts row1 and ends before row2. i.e, occupies row1
+  	  grid-column: 2 / -1;  // item starts col2 and ends last column. i.e, occupies all columns till last.
+          ex:
+            span 1 means 'occupies 1 grid-cell' 
+            -1 means occupies all cells till end of row/column.
+            1/4 (or) 1/span3 means occupies 1,2,3 cells.              
